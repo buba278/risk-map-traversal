@@ -10,4 +10,12 @@ public class Country {
     this.continent = continent;
     this.tax = Integer.parseInt(tax);
   }
+
+  public String getContinent() {
+    return this.continent;
+  }
+
+  public String getTax() {
+    return String.valueOf(this.tax);
+  }
 }
