@@ -45,7 +45,15 @@ public class MapEngine {
 
   /** this method is invoked when the user run the command route. */
   public void showRoute() {
+    // prompting for inputs
+    Country sourceCountry = getCountryInput(MessageCli.INSERT_SOURCE.getMessage());
+    Country destinationCountry = getCountryInput(MessageCli.INSERT_DESTINATION.getMessage());
 
+    // check if the source and destiantion are == 
+    if (sourceCountry.equals(destinationCountry)) {
+      MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
+      return;
+    }
   }
 
   public Country getCountryInput(String promptMessage) {
