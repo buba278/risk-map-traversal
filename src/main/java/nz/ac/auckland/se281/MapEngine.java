@@ -38,21 +38,24 @@ public class MapEngine {
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
     // compartmentalised input function to be reused
-    Country country = getCountryInput();
+    Country country = getCountryInput(MessageCli.INSERT_COUNTRY.getMessage());
     String name = country.getName();
     MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), country.getTax());
   }
 
   /** this method is invoked when the user run the command route. */
-  public void showRoute() {}
+  public void showRoute() {
 
-  public Country getCountryInput() {
+  }
+
+  public Country getCountryInput(String promptMessage) {
     boolean validInput = false;
     Country country = null;
     String name = null;
 
     while (!validInput) {
       try {
+        System.out.println(promptMessage);
         name = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
         country = riskMap.getCountry(name);
         validInput = true;
