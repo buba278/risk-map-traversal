@@ -37,7 +37,16 @@ public class MapEngine {
 
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
-    // initialise vars
+    // compartmentalised input function to be reused
+    Country country = getCountryInput();
+    String name = country.getName();
+    MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), country.getTax());
+  }
+
+  /** this method is invoked when the user run the command route. */
+  public void showRoute() {}
+
+  public Country getCountryInput() {
     boolean validInput = false;
     Country country = null;
     String name = null;
@@ -53,9 +62,6 @@ public class MapEngine {
       }
     }
 
-    MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), country.getTax());
+    return country;
   }
-
-  /** this method is invoked when the user run the command route. */
-  public void showRoute() {}
 }

@@ -18,4 +18,8 @@ public class Country {
   public String getTax() {
     return String.valueOf(this.tax);
   }
+
+  public String getName() {
+    return this.name;
+  }
 }
