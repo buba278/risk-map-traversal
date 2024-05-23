@@ -55,7 +55,19 @@ public class Graph {
     while (!queue.isEmpty()) {
       Country current = queue.remove();
       for (Country adjCountry : adjacencyMap.get(current)) {
-        if (!visited.contains(adjCountry)) {
+        if (adjCountry.equals(destination)) {
+          // if we found the country we are looking for
+          // traverse back till we find source
+          while (!adjCountry.equals(destination)) {
+            route.add(adjCountry);
+            adjCountry = parentMap.get(adjCountry);
+          }
+
+          // add the final source location
+          route.add(destination);
+          return route;
+        }
+        else if (!visited.contains(adjCountry)) {
           // if I havent visited this yet, put it in queue for exploration
           // avoids repetition with visited set
           // and track parent
