@@ -2,6 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.Arrays;
 
 /** This class is the main entry point. */
@@ -70,8 +71,12 @@ public class MapEngine {
         routeString += country.getName() + ", ";
       }
     }
-    
     MessageCli.ROUTE_INFO.printMessage(routeString);
+
+    // print continents
+    Set<String> continentSet = riskMap.getContinents(route);
+    String continentString = "[" + String.join(", ", continentSet) + "]";
+    MessageCli.CONTINENT_INFO.printMessage(continentString);
   }
 
   public Country getCountryInput(String promptMessage) {
