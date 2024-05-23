@@ -4,6 +4,7 @@ import java.util.List;
 
 /** This class is the main entry point. */
 public class MapEngine {
+  private Graph<Country> riskMap = new Graph<>();
 
   public MapEngine() {
     // add other code here if you want
@@ -14,7 +15,21 @@ public class MapEngine {
   private void loadMap() {
     List<String> countries = Utils.readCountries();
     List<String> adjacencies = Utils.readAdjacencies();
-    // add code here to create your data structures
+    
+    // split up the information from countries and adjacencies
+    for (String s : countries) {
+      String[] countrySplit = s.split(",");
+      // 1. Country, 2. Continent, 3. Tax
+
+
+    }
+
+    for (String s : adjacencies) {
+      String[] adjSplit = s.split(",");
+      // Root country then adjs
+
+
+    }
   }
 
   /** this method is invoked when the user run the command info-country. */
