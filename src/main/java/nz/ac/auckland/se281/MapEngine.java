@@ -1,9 +1,8 @@
 package nz.ac.auckland.se281;
 
-import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Set;
-import java.util.Arrays;
 
 /** This class is the main entry point. */
 public class MapEngine {
