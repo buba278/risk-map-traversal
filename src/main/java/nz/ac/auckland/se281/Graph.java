@@ -1,14 +1,14 @@
 package nz.ac.auckland.se281;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import java.util.Queue;
-import java.util.Collections;
+import java.util.Set;
 
 public class Graph {
   private Map<Country, LinkedList<Country>> adjacencyMap;
@@ -17,7 +17,7 @@ public class Graph {
   public Graph() {
     this.adjacencyMap = new HashMap<Country, LinkedList<Country>>();
   }
-  
+
   public void addCountry(String name, String continent, String tax) {
     Country country = new Country(name, continent, tax);
     adjacencyMap.putIfAbsent(country, new LinkedList<Country>());
@@ -26,10 +26,10 @@ public class Graph {
   }
 
   public void addBorder(Country country1, Country country2) {
-  // assuming all the countries were loaded before
+    // assuming all the countries were loaded before
 
-  // add adjacency for each of them
-  adjacencyMap.get(country1).add(country2);
+    // add adjacency for each of them
+    adjacencyMap.get(country1).add(country2);
   }
 
   public Country getCountry(String name) throws RuntimeException {
@@ -77,7 +77,6 @@ public class Graph {
           parentMap.put(adjCountry, current);
           visited.add(adjCountry);
           queue.add(adjCountry);
-
         }
       }
     }

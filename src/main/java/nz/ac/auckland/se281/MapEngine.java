@@ -1,6 +1,5 @@
 package nz.ac.auckland.se281;
 
-
 import java.util.List;
 import java.util.Set;
 
@@ -42,7 +41,8 @@ public class MapEngine {
     // compartmentalised input function to be reused
     Country country = getCountryInput(MessageCli.INSERT_COUNTRY.getMessage());
     String name = country.getName();
-    MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), String.valueOf(country.getTax()));
+    MessageCli.COUNTRY_INFO.printMessage(
+        name, country.getContinent(), String.valueOf(country.getTax()));
   }
 
   /** this method is invoked when the user run the command route. */
@@ -63,10 +63,9 @@ public class MapEngine {
     // print the route
     String routeString = "[";
     for (Country country : route) {
-      if (country.equals(destinationCountry)){
+      if (country.equals(destinationCountry)) {
         routeString += country.getName() + "]";
-      }
-      else {
+      } else {
         routeString += country.getName() + ", ";
       }
     }
