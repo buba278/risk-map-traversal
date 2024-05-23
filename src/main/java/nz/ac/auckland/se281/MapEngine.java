@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -66,14 +67,11 @@ public class MapEngine {
     List<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
 
     // print the route
-    String routeString = "[";
+    LinkedHashSet<String> routeStrings = new LinkedHashSet<>();
     for (Country country : route) {
-      if (country.equals(destinationCountry)) {
-        routeString += country.getName() + "]";
-      } else {
-        routeString += country.getName() + ", ";
-      }
+      routeStrings.add(country.getName());
     }
+    String routeString = "[" + String.join(", ", routeStrings) + "]";
     MessageCli.ROUTE_INFO.printMessage(routeString);
 
     // print continents
@@ -94,7 +92,7 @@ public class MapEngine {
   public Country getCountryInput(String promptMessage) {
     boolean validInput = false;
     Country country = null;
-    String name = null;
+    String name;
 
     while (!validInput) {
       try {
