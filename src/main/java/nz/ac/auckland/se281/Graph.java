@@ -98,6 +98,14 @@ public class Graph {
 
   public int getTax(List<Country> route) {
     // get the route planned and sum taxes excluding the first
-    return 1;
+    int sum = 0;
+    for (Country country : route) {
+      if (country.equals(route.get(0))) {
+        continue;
+      }
+      sum += country.getTax();
+    }
+
+    return sum;
   }
 }

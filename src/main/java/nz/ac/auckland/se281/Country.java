@@ -15,8 +15,8 @@ public class Country {
     return this.continent;
   }
 
-  public String getTax() {
-    return String.valueOf(this.tax);
+  public int getTax() {
+    return this.tax;
   }
 
   public String getName() {

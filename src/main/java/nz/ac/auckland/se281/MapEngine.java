@@ -42,7 +42,7 @@ public class MapEngine {
     // compartmentalised input function to be reused
     Country country = getCountryInput(MessageCli.INSERT_COUNTRY.getMessage());
     String name = country.getName();
-    MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), country.getTax());
+    MessageCli.COUNTRY_INFO.printMessage(name, country.getContinent(), String.valueOf(country.getTax()));
   }
 
   /** this method is invoked when the user run the command route. */
@@ -76,6 +76,9 @@ public class MapEngine {
     Set<String> continentSet = riskMap.getContinents(route);
     String continentString = "[" + String.join(", ", continentSet) + "]";
     MessageCli.CONTINENT_INFO.printMessage(continentString);
+
+    // print tax
+    MessageCli.TAX_INFO.printMessage(String.valueOf(riskMap.getTax(route)));
   }
 
   public Country getCountryInput(String promptMessage) {
