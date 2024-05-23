@@ -65,6 +65,8 @@ public class Graph {
 
           // add the final source location
           route.add(destination);
+          // reverse the list for the correct order
+          Collections.reverse(route);
           return route;
         }
         else if (!visited.contains(adjCountry)) {
