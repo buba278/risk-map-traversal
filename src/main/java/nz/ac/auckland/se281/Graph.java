@@ -55,16 +55,18 @@ public class Graph {
     while (!queue.isEmpty()) {
       Country current = queue.remove();
       for (Country adjCountry : adjacencyMap.get(current)) {
+        // track parent
+        parentMap.put(adjCountry, current);
         if (adjCountry.equals(destination)) {
           // if we found the country we are looking for
           // traverse back till we find source
-          while (!adjCountry.equals(destination)) {
+          while (!adjCountry.equals(source)) {
             route.add(adjCountry);
             adjCountry = parentMap.get(adjCountry);
           }
 
           // add the final source location
-          route.add(destination);
+          route.add(source);
           // reverse the list for the correct order
           Collections.reverse(route);
           return route;
@@ -72,10 +74,9 @@ public class Graph {
         else if (!visited.contains(adjCountry)) {
           // if I havent visited this yet, put it in queue for exploration
           // avoids repetition with visited set
-          // and track parent
           visited.add(adjCountry);
           queue.add(adjCountry);
-          parentMap.put(adjCountry, current);
+
         }
       }
     }

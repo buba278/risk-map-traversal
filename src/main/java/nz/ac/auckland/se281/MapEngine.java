@@ -58,6 +58,9 @@ public class MapEngine {
 
     // if not then get the line to take
     List<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
+
+    // print the route
+    MessageCli.ROUTE_INFO.printMessage(route.toString());
   }
 
   public Country getCountryInput(String promptMessage) {
