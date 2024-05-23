@@ -7,6 +7,11 @@ import java.util.Set;
 public class MapEngine {
   private Graph riskMap = new Graph();
 
+  /**
+   * Constructor for initialising the map.
+
+   * @return a map engine instance.
+   */
   public MapEngine() {
     // add other code here if you want
     loadMap(); // keep this mehtod invocation
@@ -80,6 +85,12 @@ public class MapEngine {
     MessageCli.TAX_INFO.printMessage(String.valueOf(riskMap.getTax(route)));
   }
 
+  /**
+   * Method for returning a country input from the user.
+
+   * @param promptMessage the message outputed to the user asking for input.
+   * @return the Country that was requested by the user.
+   */
   public Country getCountryInput(String promptMessage) {
     boolean validInput = false;
     Country country = null;
