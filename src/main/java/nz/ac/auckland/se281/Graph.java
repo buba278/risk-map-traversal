@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Queue;
+import java.util.Collections;
 
 public class Graph {
   private Map<Country, LinkedList<Country>> adjacencyMap;
@@ -43,6 +44,27 @@ public class Graph {
     Set<Country> visited = new HashSet<Country>();
     Queue<Country> queue = new LinkedList<Country>();
     List<Country> route = new LinkedList<Country>();
+    // "parent" country tracker || country, parent
+    Map<Country, Country> parentMap = new HashMap<Country, Country>();
+
+    // start traversal from first node
+    queue.add(source);
+    visited.add(source);
+
+    // iterate through adjs LL, breadth wise
+    while (!queue.isEmpty()) {
+      Country current = queue.remove();
+      for (Country adjCountry : adjacencyMap.get(current)) {
+        if (!visited.contains(adjCountry)) {
+          // if I havent visited this yet, put it in queue for exploration
+          // avoids repetition with visited set
+          // and track parent
+          visited.add(adjCountry);
+          queue.add(adjCountry);
+          parentMap.put(adjCountry, current);
+        }
+      }
+    }
 
     return route;
   }
