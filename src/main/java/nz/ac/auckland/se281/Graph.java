@@ -34,4 +34,14 @@ public class Graph {
     }
     return countrySet.get(name);
   }
+
+  public LinkedList<Country> getRoute(Country source, Country destination) {
+    // find the shortest route from source to destination
+    return null;
+  }
+
+  public int getTax(List<Country> route) {
+    // get the route planned and sum taxes excluding the first
+    return 1;
+  }
 }

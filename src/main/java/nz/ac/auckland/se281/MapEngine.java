@@ -1,6 +1,7 @@
 package nz.ac.auckland.se281;
 
 import java.util.List;
+import java.util.LinkedList;
 
 /** This class is the main entry point. */
 public class MapEngine {
@@ -54,6 +55,9 @@ public class MapEngine {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
+
+    // if not then get the line to take
+    LinkedList<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
   }
 
   public Country getCountryInput(String promptMessage) {
