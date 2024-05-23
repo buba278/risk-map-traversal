@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Queue;
 
 public class Graph {
   private Map<Country, LinkedList<Country>> adjacencyMap;
@@ -35,9 +38,13 @@ public class Graph {
     return countrySet.get(name);
   }
 
-  public LinkedList<Country> getRoute(Country source, Country destination) {
+  public List<Country> getRoute(Country source, Country destination) {
     // find the shortest route from source to destination
-    return null;
+    Set<Country> visited = new HashSet<Country>();
+    Queue<Country> queue = new LinkedList<Country>();
+    List<Country> route = new LinkedList<Country>();
+
+    return route;
   }
 
   public int getTax(List<Country> route) {

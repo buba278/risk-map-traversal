@@ -1,7 +1,7 @@
 package nz.ac.auckland.se281;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /** This class is the main entry point. */
 public class MapEngine {
@@ -16,7 +16,7 @@ public class MapEngine {
   private void loadMap() {
     List<String> countries = Utils.readCountries();
     List<String> adjacencies = Utils.readAdjacencies();
-    
+
     // split up the information from countries and adjacencies
     for (String s : countries) {
       String[] countrySplit = s.split(",");
@@ -50,14 +50,14 @@ public class MapEngine {
     Country sourceCountry = getCountryInput(MessageCli.INSERT_SOURCE.getMessage());
     Country destinationCountry = getCountryInput(MessageCli.INSERT_DESTINATION.getMessage());
 
-    // check if the source and destiantion are == 
+    // check if the source and destiantion are ==
     if (sourceCountry.equals(destinationCountry)) {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
 
     // if not then get the line to take
-    LinkedList<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
+    List<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
   }
 
   public Country getCountryInput(String promptMessage) {
@@ -71,8 +71,7 @@ public class MapEngine {
         name = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
         country = riskMap.getCountry(name);
         validInput = true;
-      }
-      catch (CountryNotFoundException e) {
+      } catch (CountryNotFoundException e) {
         System.out.println(e.getMessage());
       }
     }
