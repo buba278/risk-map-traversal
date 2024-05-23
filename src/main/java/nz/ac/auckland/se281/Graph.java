@@ -30,7 +30,6 @@ public class Graph {
 
   // add adjacency for each of them
   adjacencyMap.get(country1).add(country2);
-  adjacencyMap.get(country2).add(country1);
   }
 
   public Country getCountry(String name) throws RuntimeException {

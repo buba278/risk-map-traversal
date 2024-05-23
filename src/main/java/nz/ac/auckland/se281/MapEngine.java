@@ -70,7 +70,7 @@ public class MapEngine {
         routeString += country.getName() + ", ";
       }
     }
-
+    
     MessageCli.ROUTE_INFO.printMessage(routeString);
   }
 
