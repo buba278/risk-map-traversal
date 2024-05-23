@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Queue;
 import java.util.Collections;
@@ -83,6 +84,17 @@ public class Graph {
     }
 
     return route;
+  }
+
+  public Set<String> getContinents(List<Country> route) {
+    // retained order through link
+    Set<String> continentSet = new LinkedHashSet<>();
+    for (Country country : route) {
+      // no duplicate continents cause set
+      String continent = country.getContinent();
+      continentSet.add(continent);
+    }
+    return continentSet;
   }
 
   public int getTax(List<Country> route) {
