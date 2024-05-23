@@ -2,6 +2,7 @@ package nz.ac.auckland.se281;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Arrays;
 
 /** This class is the main entry point. */
 public class MapEngine {
@@ -60,7 +61,17 @@ public class MapEngine {
     List<Country> route = riskMap.getRoute(sourceCountry, destinationCountry);
 
     // print the route
-    MessageCli.ROUTE_INFO.printMessage(route.toString());
+    String routeString = "[";
+    for (Country country : route) {
+      if (country.equals(destinationCountry)){
+        routeString += country.getName() + "]";
+      }
+      else {
+        routeString += country.getName() + ", ";
+      }
+    }
+
+    MessageCli.ROUTE_INFO.printMessage(routeString);
   }
 
   public Country getCountryInput(String promptMessage) {
