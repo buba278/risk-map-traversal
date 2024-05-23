@@ -37,7 +37,19 @@ public class MapEngine {
 
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
-    // add code here
+    boolean validInput = false;
+
+    while (!validInput) {
+
+      try {
+        String name = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
+        Country country = riskMap.getCountry(name);
+        validInput = true;
+      }
+      catch (CountryNotFoundException e) {
+        System.out.println(e.getMessage());
+      }
+    }
   }
 
   /** this method is invoked when the user run the command route. */

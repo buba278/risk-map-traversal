@@ -16,6 +16,8 @@ public class Graph {
   public void addCountry(String name, String continent, String tax) {
     Country country = new Country(name, continent, tax);
     adjacencyMap.putIfAbsent(country, new LinkedList<Country>());
+    // add to the tracker for countries too
+    countrySet.putIfAbsent(name, country);
   }
 
   public void addBorder(Country country1, Country country2) {
@@ -26,7 +28,10 @@ public class Graph {
   adjacencyMap.get(country2).add(country1);
   }
 
-  public Country getCountry(String name) {
+  public Country getCountry(String name) throws RuntimeException {
+    if (!countrySet.containsKey(name)) {
+      throw new CountryNotFoundException(name);
+    }
     return countrySet.get(name);
   }
 }
