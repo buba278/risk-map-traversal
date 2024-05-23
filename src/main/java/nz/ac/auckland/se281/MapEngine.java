@@ -4,7 +4,7 @@ import java.util.List;
 
 /** This class is the main entry point. */
 public class MapEngine {
-  private Graph<Country> riskMap = new Graph<>();
+  private Graph riskMap = new Graph();
 
   public MapEngine() {
     // add other code here if you want
@@ -20,15 +20,18 @@ public class MapEngine {
     for (String s : countries) {
       String[] countrySplit = s.split(",");
       // 1. Country, 2. Continent, 3. Tax
-      
 
+      riskMap.addCountry(countrySplit[0], countrySplit[1], countrySplit[2]);
     }
 
     for (String s : adjacencies) {
       String[] adjSplit = s.split(",");
       // Root country then adjs
 
-
+      Country rootCountry = riskMap.getCountry(adjSplit[0]);
+      for (int i = 1; i < adjSplit.length; i++) {
+        riskMap.addBorder(rootCountry, riskMap.getCountry(adjSplit[i]));
+      }
     }
   }
 
