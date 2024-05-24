@@ -94,17 +94,21 @@ public class MapEngine {
     Country country = null;
     String name;
 
+    // assume that the input is valid for first loop iteration
     while (!validInput) {
       try {
         System.out.println(promptMessage);
         name = Utils.capitalizeFirstLetterOfEachWord(Utils.scanner.nextLine());
+        // if not valid, then getCountry throws exception
         country = riskMap.getCountry(name);
+        // if it passes through then its valid
         validInput = true;
       } catch (CountryNotFoundException e) {
+        // print exception message
         System.out.println(e.getMessage());
       }
     }
-
+    // once it gets a valid input return the country
     return country;
   }
 }
